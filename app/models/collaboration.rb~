@@ -1,0 +1,3 @@
+class Collaboration < ActiveRecord::Base
+  validates :desc, length: { minimum: 100 }
+end

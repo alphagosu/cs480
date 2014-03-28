@@ -1,0 +1,37 @@
+<%= form_for(@collaboration) do |f| %>
+  <% if @collaboration.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@collaboration.errors.count, "error") %> prohibited this collaboration from being saved:</h2>
+
+      <ul>
+      <% @collaboration.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :desc %><br>
+    <%= f.text_field :desc %>
+  </div>
+  <div class="field">
+    <%= f.label :country %><br>
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br>
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :county %><br>
+    <%= f.text_field :county %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

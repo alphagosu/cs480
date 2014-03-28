@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @collaboration.name %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @collaboration.desc %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @collaboration.country %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @collaboration.state %>
+</p>
+
+<p>
+  <strong>County:</strong>
+  <%= @collaboration.county %>
+</p>
+
+<%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
+<%= link_to 'Back', collaborations_path %>

@@ -1,6 +1,5 @@
 Rct::Application.routes.draw do
-  get "users/new"
-  get "static_pages/home"
+
   resources :collaborations
 
   resources :users

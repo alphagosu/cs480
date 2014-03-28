@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
-
+ruby '2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.4'
-
+gem 'bootstrap-sass'
+gem 'sprockets'
 # Use sqlite3 as the database for Active Record
 group :development do
-      gem 'sqlite3'	   
+      gem 'sqlite3'
+      gem 'rspec-rails', '2.13.1'	   
 end
 
 # Use SCSS for stylesheets
@@ -45,6 +47,13 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#testing
+group :test do
+      gem 'selenium-webdriver', '2.35.1'
+      gem 'capybara', '2.1.0'
+end
+
 
 # for Heroku
 group :production do

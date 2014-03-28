@@ -9,4 +9,16 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Rct::Application.config.secret_key_base = 'f943cc808dd59d1316ac24abe808361c642cd006bf9f394c8e3b02890069cbe2ffd863e3e0270c749315c1e212885cf2cda0426737b66b794e3ffade62ebd634'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    File.read(token_file).chomp
+  else
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Rct::Application.config.secret_key_base = secure_token

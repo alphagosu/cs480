@@ -10,6 +10,10 @@ group :development do
       gem 'rspec-rails', '2.13.1'	   
 end
 
+gem 'countries'
+gem 'country_select'
+gem 'carmen-rails'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'
 

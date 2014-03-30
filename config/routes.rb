@@ -3,10 +3,12 @@ Rct::Application.routes.draw do
   resources :collaborations
 
   resources :users
-
+  
+  resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'
   match '/registration', to: 'users#new', via: 'get'
-  
+  match '/signin', to: 'sessions#new', via: 'get'
+  match '/signout', to: 'sessions#destroy', via: 'delete'
   get '/users/subregion_options' => 'users#subregion_options'
 
   # The priority is based upon order of creation: first created -> highest priority.

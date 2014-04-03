@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   def subregion_options
     render partial: 'subregion_select'
@@ -24,6 +26,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users
@@ -32,6 +35,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # user saved successfully
+      sign_in @user
       flash[:success] = "Welcome to the Research Collaboration Tool!"
       redirect_to @user
     else
@@ -43,6 +47,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+
+    @user = User.find(params[:id])
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -57,11 +64,8 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url }
-      format.json { head :no_content }
-    end
+    sign_out
+    redirect_to root_url
   end
 
   private
@@ -72,6 +76,15 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :country, :state, :county, :password, :password_confirmation, :is_researcher, :is_teacher, :is_student, :is_comm_member, :main_interests, :s_animal, :s_children, :s_adults, :s_environment, :s_cells, :study_location, :experience, :travel_distance, :i_obesity, :i_diabetes, :i_heart, :i_injury, :i_violence_prevention, :i_falls)
+      params.require(:user).permit(:first_name, :last_name, :email, :country, :state, :county, :password, :password_confirmation, :is_researcher, :is_teacher, :is_student, :is_comm_member, :main_interests, :s_animal, :s_children, :s_adults, :s_environment, :s_cells, :study_location, :experience, :travel_distance, :i_obesity, :i_diabetes, :i_heart, :i_injury, :i_violence_prevention, :i_falls, :avatar)
+    end
+
+    def signed_in_user
+      redirect_to signin_url, notice: "Please sign in." unless signed_in?
+    end
+
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
     end
 end

@@ -12,6 +12,8 @@ INTERESTS = ["Obesity",
              "Violence prevention",
              "Falls" ]
 
+  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>" }, :default_url => "images/:style/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }

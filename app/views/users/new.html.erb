@@ -93,6 +93,11 @@
 	<%= f.label :experience, "How long have you been involved in these subjects?" %>
 	<%= f.select :experience, ['Less than 5 years', '5-10 years', '11-15 years', '16-20 years', '21-25 years', '26-30 years', '30+ years'], { prompt: 'Please select' }, { class: 'form-control' } %>
       </div>
+      
+      <div class="form-group">
+	<%= f.label :avatar, "Upload a picture of yourself" %>
+	<%= f.file_field :avatar %>
+      </div>
 
 
       

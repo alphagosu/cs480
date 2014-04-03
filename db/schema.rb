@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403155757) do
+ActiveRecord::Schema.define(version: 20140403165248) do
 
   create_table "collaborations", force: true do |t|
     t.string   "name"
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(version: 20140403155757) do
     t.string   "s_adults"
     t.string   "s_environment"
     t.string   "s_cells"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

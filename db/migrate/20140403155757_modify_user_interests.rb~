@@ -1,0 +1,18 @@
+class ModifyUserInterests < ActiveRecord::Migration
+  def change
+    add_column :users, :s_animal, :string
+    add_column :users, :s_children, :string
+    add_column :users, :s_adults, :string
+    add_column :users, :s_environment, :string
+    add_column :users, :s_cells, :string
+  end
+
+  def up
+    remove_column :users, :study
+  end
+
+  def down
+    add_column :users, :study, :string
+  end
+
+end

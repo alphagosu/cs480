@@ -1,0 +1,13 @@
+class AddDetailFieldsToUser < ActiveRecord::Migration
+  def change
+    add_column :users, :is_researcher, :boolean
+    add_column :users, :is_teacher, :boolean
+    add_column :users, :is_student, :boolean
+    add_column :users, :is_comm_member, :boolean
+    add_column :users, :study, :string
+    add_column :users, :study_location, :string
+    add_column :users, :main_interests, :string
+    add_column :users, :experience, :int
+    add_column :users, :travel_distance, :int
+  end
+end

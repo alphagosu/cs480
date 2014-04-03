@@ -24,6 +24,7 @@
       </div>
 
       <div class="form-group">
+	<p class="help-block">Must be at least 6 characters.</p>
 	<%= f.label :password %>
 	<%= f.password_field :password, class: 'form-control' %>
       </div>
@@ -32,6 +33,68 @@
 	<%= f.label :password_confirmation %>
 	<%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
+
+      <div class="form-group">
+	<label>I am a...</label>
+	<div>
+	  <%= f.label :is_researcher, "Researcher", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_researcher %>
+	  <%= f.label :is_teacher, "Teacher", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_teacher %>
+	  <%= f.label :is_student, "Student", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_student %>
+	  <%= f.label :is_comm_member, "Community member", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_comm_member %>
+	</div>
+      </div>
+
+      <div class="form-group">
+	<%= f.label :main_interests %>
+	<%= f.text_field :main_interests %>
+      </div>
+      
+      <div class="form-group">
+	<label>Who/what do you study?</label>
+	<%= f.label :s_animal, "Animals", class: "checkbox-inline" %>
+	<%= f.check_box :s_animal %>
+	<%= f.label :s_children, "Children", class: "checkbox-inline" %>
+	<%= f.check_box :s_children %>
+	<%= f.label :s_adults, "Adults", class: "checkbox-inline" %>
+	<%= f.check_box :s_adults %>
+	<%= f.label :s_environment, "Environment", class: "checkbox-inline" %>
+	<%= f.check_box :s_environment %>
+	<%= f.label :s_cells, "Cells/Tissues", class: "checkbox-inline" %>
+	<%= f.check_box :s_cells %>
+      </div>
+
+      <div class="form-group">
+	<%= f.label :study_location, "Where do you primarily study it?" %>
+	<%= f.select :study_location, ['Lab', 'Classroom (primary)', 'Classroom (secondary)', 'Classroom (post-seconday)', 'Classroom (technical)', 'Clinic', 'Field/community'], {prompt: 'Please select' }, { class: 'form-control' } %>
+      </div>
+
+      <div class="form-group">
+	<label>What are your main interests?</label>
+	<div>
+	  <%= f.label :i_obesity, "Obesity", class: "checkbox-inline" %>
+	  <%= f.check_box :i_obesity %>
+	  <%= f.label :i_diabetes, "Diabetes/sugar", class: "checkbox-inline" %>
+	  <%= f.check_box :i_diabetes %>
+	  <%= f.label :i_heart, "Heart disease", class: "checkbox-inline" %>
+	  <%= f.check_box :i_heart %>
+	  <%= f.label :i_injury, "Injuries", class: "checkbox-inline" %>
+	  <%= f.check_box :i_injury %>
+	  <%= f.label :i_violence_prevention, "Violence prevention", class: "checkbox-inline" %>
+	  <%= f.check_box :i_violence_prevention %>
+	  <%= f.label :i_falls, "Falls", class: "checkbox-inline" %>
+	  <%= f.check_box :i_falls %>
+      </div>
+
+      <div class="form-group">
+	<%= f.label :experience, "How long have you been involved in these subjects?" %>
+	<%= f.select :experience, ['Less than 5 years', '5-10 years', '11-15 years', '16-20 years', '21-25 years', '26-30 years', '30+ years'], { prompt: 'Please select' }, { class: 'form-control' } %>
+      </div>
+
+
       
       <div class="form-group">
 	<%= f.label :country %>
@@ -40,11 +103,19 @@
 
       <div class="form-group">
 	<%= f.label :state %>
-	<%= render partial: 'subregion_select', locals: {parent_region: f.object.country} %>
+	<%= f.text_field :state %>
+      </div>
+      
+      <div class="form-group">
+	<%= f.label :county %>
+	<%= f.text_field :county %>
       </div>
 
-      <%= f.label :county %>
-      <%= f.text_field :county %>
+      <div class="form-group">
+	<%= f.label :travel_distance, "How far are you willing to travel for a project?" %>
+	<%= f.select :travel_distance, ['&lt; 10 miles', '20 miles', '40 miles', '60 miles', 'Depends on the project'], { prompt: 'Please select' }, { class: 'form-control' } %>
+      </div>
+      
       
       <%= f.submit "Create my profile", class: "btn btn-large btn-primary" %>
       <% end %>

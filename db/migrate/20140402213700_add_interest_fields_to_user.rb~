@@ -1,0 +1,10 @@
+class AddInterestFieldsToUser < ActiveRecord::Migration
+  def change
+    add_column :user, :i_obesity, :boolean, default: false
+    add_column :user, :i_diabetes, :boolean, default: false
+    add_column :user, :i_heart, :boolean, default: false
+    add_column :user, :i_injury, :boolean, default: false
+    add_column :user, :i_violence_prevention, :boolean, default: false
+    add_column :user, :i_falls, :boolean, default: false
+  end
+end

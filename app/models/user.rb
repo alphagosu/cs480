@@ -24,7 +24,6 @@ INTERESTS = ["Obesity",
   validates :county, presence: true
   has_many :collaborations
   has_secure_password
-  validates :password, length: { minimum: 6}
 
   validates :study_location, presence: true
   validates :experience, presence: true
@@ -32,7 +31,9 @@ INTERESTS = ["Obesity",
 
   validate :at_least_one_title_is_checked
   validate :at_least_one_study_topic_is_checked
-  validate :at_least_one_interest_is_checked
+  
+  validates :password, presence: true, confirmation: true, length: { within: 6..40 }, on: :create
+  validates :password, confirmation: true, length: { within: 6..40 }, on: :update, unless: lambda{ |user| user.password.blank? }
 
   def at_least_one_title_is_checked
     errors.add(:base, "Select at least one title.") unless is_researcher || is_teacher || is_student || is_comm_member

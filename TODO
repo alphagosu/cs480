@@ -1,8 +1,6 @@
 - need to add avatar upload in edit page (show avatar if one is uploaded)
 
-- no need for password when updating profile (unless updating password)
- 
-- need to edit and seperate edit page in general
+- shows duplicate error message when password conf doesn't match when updating password
 
 - have country selection generate states --> counties
 

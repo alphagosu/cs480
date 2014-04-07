@@ -32,6 +32,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def notifications
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -60,8 +64,11 @@ class UsersController < ApplicationController
       elsif URI(request.referer).path == edit_user_path
         format.html { render action: 'edit' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
-      else
+      elsif URI(request.referer).path == settings_user_path
         format.html { render action: 'settings' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      else
+        format.html { render action: 'notifications' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -82,7 +89,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :country, :state, :county, :password, :password_confirmation, :is_researcher, :is_teacher, :is_student, :is_comm_member, :main_interests, :s_animal, :s_children, :s_adults, :s_environment, :s_cells, :study_location, :experience, :travel_distance, :i_obesity, :i_diabetes, :i_heart, :i_injury, :i_violence_prevention, :i_falls, :avatar)
+      params.require(:user).permit(:first_name, :last_name, :email, :country, :state, :county, :password, :password_confirmation, :is_researcher, :is_teacher, :is_student, :is_comm_member, :main_interests, :s_animal, :s_children, :s_adults, :s_environment, :s_cells, :study_location, :experience, :travel_distance, :i_obesity, :i_diabetes, :i_heart, :i_injury, :i_violence_prevention, :i_falls, :avatar, :notify_new_message, :notify_new_collab, :notify_collab_percent)
     end
 
     def signed_in_user

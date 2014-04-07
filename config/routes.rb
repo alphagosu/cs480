@@ -5,6 +5,7 @@ Rct::Application.routes.draw do
   resources :users  do
     member do
       get :settings
+      get :notifications
     end
   end
   

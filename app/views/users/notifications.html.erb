@@ -1,0 +1,32 @@
+<% provide(:title, "Notifications") %>
+<div class="row">
+  <%= render partial: "edit_sidebar" %>
+
+  <div class="col-md-10" style="padding:25px">
+
+    <%= form_for(@user) do |f| %>
+    <%= render '/shared/error_messages' %>
+    <label>Recieve email alerts when:</label>
+    <div class="checkbox">
+      <%= f.label :notify_new_message do %>
+      <%= f.check_box :notify_new_message %>
+      I recieve a new message
+      <% end %>
+    </div>
+    <div class="checkbox">
+      <%= f.label :notify_new_collab do %>
+      <%= f.check_box :notify_new_collab %>
+      A new collaboration is created, and has a 
+      <% end %>
+      <%= f.text_field :notify_collab_percent, size: "3" %>
+       % matching rate.
+      <p class="help-block">0% for every new collaboration</p>
+    </div>
+   
+    <div class="form-group pull-right">
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+      

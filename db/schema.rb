@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140403165248) do
+ActiveRecord::Schema.define(version: 20140407201239) do
 
   create_table "collaborations", force: true do |t|
     t.string   "name"
@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 20140403165248) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.boolean  "notify_new_message",    default: true
+    t.boolean  "notify_new_collab",     default: true
+    t.integer  "notify_collab_percent", default: 70
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

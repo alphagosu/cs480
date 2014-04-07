@@ -28,6 +28,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def settings
+    @user = User.find(params[:id])
+  end
+
   # POST /users
   # POST /users.json
   def create
@@ -53,8 +57,11 @@ class UsersController < ApplicationController
       if @user.update_attributes(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { head :no_content }
-      else
+      elsif URI(request.referer).path == edit_user_path
         format.html { render action: 'edit' }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      else
+        format.html { render action: 'settings' }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end

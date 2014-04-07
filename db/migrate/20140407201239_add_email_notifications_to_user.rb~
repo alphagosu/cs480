@@ -1,0 +1,4 @@
+class AddEmailNotificationsToUser < ActiveRecord::Migration
+  def change
+  end
+end

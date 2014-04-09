@@ -1,5 +1,11 @@
 - need to add avatar upload in edit page (show avatar if one is uploaded)
 
+- messages
+
+- collaborations
+
+- search
+
 - shows duplicate error message when password conf doesn't match when updating password
 
 - have country selection generate states --> counties

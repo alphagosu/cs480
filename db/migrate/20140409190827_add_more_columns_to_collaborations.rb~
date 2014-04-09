@@ -1,0 +1,6 @@
+class AddMoreColumnsToCollaborations < ActiveRecord::Migration
+  def change
+    add_column :collaborations, :stage, :string
+    add_column :collaborations, :
+  end
+end

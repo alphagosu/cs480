@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407201239) do
+ActiveRecord::Schema.define(version: 20140409205446) do
 
   create_table "collaborations", force: true do |t|
     t.string   "name"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20140407201239) do
     t.string   "county"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stage"
+    t.boolean  "n_funding"
+    t.boolean  "n_study_partners"
+    t.boolean  "n_space"
+    t.boolean  "n_areas_of_expertise"
+    t.boolean  "n_previous_work"
+    t.string   "n_expertise"
   end
 
   create_table "users", force: true do |t|
@@ -38,7 +45,6 @@ ActiveRecord::Schema.define(version: 20140407201239) do
     t.boolean  "is_teacher"
     t.boolean  "is_student"
     t.boolean  "is_comm_member"
-    t.string   "study"
     t.string   "study_location"
     t.string   "main_interests"
     t.integer  "experience"
@@ -61,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140407201239) do
     t.boolean  "notify_new_message",    default: true
     t.boolean  "notify_new_collab",     default: true
     t.integer  "notify_collab_percent", default: 70
+    t.boolean  "admin",                 default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

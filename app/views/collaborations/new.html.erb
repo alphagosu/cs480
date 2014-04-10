@@ -1,5 +1,8 @@
-<h1>New collaboration</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', collaborations_path %>
+<% provide(:title, "Create a new collaboration") %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h3>Create a new collaboration</h3>
+  </div>
+</div>
+<%= render "form" %>
+ 

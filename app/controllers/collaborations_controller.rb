@@ -69,6 +69,9 @@ class CollaborationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def collaboration_params
-      params.require(:collaboration).permit(:name, :desc, :country, :state, :county)
+      params.require(:collaboration).permit(:name, :desc, :country, :state, :county,
+                                            :stage, :n_funding, :n_study_patterns, 
+                                            :n_space, :n_areas_of_expertise, 
+                                            :n_previous_work, :n_expertise)
     end
 end

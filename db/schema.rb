@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140409205446) do
     t.boolean  "is_teacher"
     t.boolean  "is_student"
     t.boolean  "is_comm_member"
+    t.string   "study"
     t.string   "study_location"
     t.string   "main_interests"
     t.integer  "experience"

@@ -1,5 +1,5 @@
 <div class="col-md-10">
-<%= form_for(@collaboration) do |f| %>
+<%= form_for @collaboration, html: { class: "form-horizontal" } do |f| %>
 <% if @collaboration.errors.any? %>
 <ul>
   <% @collaboration.errors.full_messages.each do |error| %>
@@ -15,6 +15,76 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <%= f.label :country, "Location", class: "col-sm-2 control-label" %>
+    <div class="col-sm-3">
+      <%= f.country_select :country %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :state %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.text_field :county %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :desc, "Description", class: "col-sm-2 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_area :desc, rows: 10 %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :stage, "What best describes the stage of development?", class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">
+      <%= f.text_field :stage %>
+    </div>
+    
+    <%= f.label :n_funding, "What are your needs for this project?", class: "col-sm-2 control-label" %>
+    <div class="col-sm-4">	
+      <div class="checkbox">
+	<%= f.label :n_funding, "Funding" %>
+	<%= f.check_box :n_funding %>
+      </div>
+      
+      <div class="checkbox">
+	<%= f.label :n_study_partners, "Study partners" %>
+	<%= f.check_box :n_study_partners %>
+      </div>
+      
+      <div class="checkbox">
+	<%= f.label :n_space, "Space" %>
+	<%= f.check_box :n_space %>
+      </div>
+      
+      <div class="checkbox">
+	<%= f.label :n_areas_of_expertise, "Areas of expertise" %>
+	<%= f.check_box :n_areas_of_expertise %>
+      </div>
+      
+      <div>
+	<%= f.label :n_expertise, "Specify:" %>
+	<%= f.text_field :n_expertise %>
+      </div>
+      
+      <div class="checkbox">
+	<%= f.label :n_previous_work, "Previous work in area" %>
+	<%= f.check_box :n_previous_work %>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+	  
+	    
   <div class="form-group">
     <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
   </div>

@@ -1,45 +1,28 @@
 <% provide(:title, @user.first_name + @user.last_name) %>
 
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-3">
+    <%= image_tag @user.avatar.url(:profile) %>
+  </div>
+  <div class="col-md-9">
+    <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+    <p>
+      <% if current_user && current_user?(@user) %>
+      <%= link_to "Edit profile", edit_user_path(@user),  class: "btn btn-primary" %>
+      <% else %>
+      <%= link_to '#', class: "btn btn-primary" do %>
+      <span class="glyphicon glyphicon-envelope" style="vertical-align:middle"></span> Send message<% end %>
+      <% end %>
+    </p>
+    <p><%= @user.county %> county, <%= @user.state %>, <%= @user.country %></p>
+    <p>A member for <%= time_ago_in_words(@user.created_at) %>.</p>
+  </div>
+</div>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @user.country %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
-
-<p>
-  <strong>County:</strong>
-  <%= @user.county %>
-</p>
-
-<p>
-  <%= image_tag @user.avatar.url(:medium) %>
-</p>
-
-<% if current_user?(@user) || current_user.admin? %>
+<% if current_user && (current_user?(@user) || current_user.admin?) %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>
-<% if current_user.admin? && !current_user(@user) %>
+<% if current_user && (current_user.admin? && !current_user(@user)) %>
 <%= link_to "delete", user, method: :delete, data: { confirm: "Are you sure?" } %> | 
 <% end %>
 <%= link_to 'Back', users_path %>

@@ -1,6 +1,6 @@
 class CollaborationsController < ApplicationController
   before_action :set_collaboration, only: [:show, :edit, :update, :destroy]
-
+  before_action :signed_in_user
   # GET /collaborations
   # GET /collaborations.json
   def index
@@ -24,17 +24,15 @@ class CollaborationsController < ApplicationController
   # POST /collaborations
   # POST /collaborations.json
   def create
-    @collaboration = Collaboration.new(collaboration_params)
 
-    respond_to do |format|
-      if @collaboration.save
-        format.html { redirect_to @collaboration, notice: 'Collaboration was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @collaboration }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @collaboration.errors, status: :unprocessable_entity }
-      end
+    @collaboration = current_user.collaborations.build(collaboration_params)
+    if @collaboration.save
+      flash[:success] = "Collaboration successfully created!"
+      redirect_to @collaboration
+    else
+      render 'static_pages/home'
     end
+
   end
 
   # PATCH/PUT /collaborations/1

@@ -1,0 +1,4 @@
+class AddCompletionAndSecondayUsersToCollabs < ActiveRecord::Migration
+  def change
+  end
+end

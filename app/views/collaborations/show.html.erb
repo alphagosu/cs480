@@ -1,29 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @collaboration.name %>
-</p>
+<div>
+  <div class="col-md-3">
+    <h4>Main collaborator</h4>
+    <p>
+      <%= link_to 'Picture of collaborator' ,'#' %>
+    </p>
+    <p>
+      <%= link_to 'Dr. Collaborator Person', '#' %>
+    </p>
+    <p>
+      <%= @collaboration.county %>, <%= @collaboration.state %>, <%= @collaboration.country %>
+    </p>
+    <p>
+      Research interests:<br />
+      <ul>
+	<li>Users interests go here</li>
+      </ul>
+    </p>
+    <h4>Other collaborators involved:</h4>
+    <div class="row">
+      <div class="col-sm-4">
 
-<p>
-  <strong>Desc:</strong>
-  <%= @collaboration.desc %>
-</p>
-
-<p>
-  <strong>Country:</strong>
-  <%= @collaboration.country %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @collaboration.state %>
-</p>
-
-<p>
-  <strong>County:</strong>
-  <%= @collaboration.county %>
-</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-9">
+    <h4>Project info</h4>
+    <p><%= @collaboration.desc %></p>
+    <div>
+      <div class="panel-body">
+	Stage of development: <%= @collaboration.stage %><br />
+	Needs for this project:<br />
+	<ul>
+	  <% if @collaborationn_funding %>
+	  <li>Funding</li>
+	  <% end %>
+	  <% if @collaboration.n_study_partners %>
+	  <li>Study partners</li>
+	  <% end %>
+	  <% if @collaboration.n_space %>
+	  <li>Space</li>
+	  <% end %>
+	  <% if @collaboration.n_areas_of_expertise %>
+	  Expertise in:
+	  <%= @collaboration.n_expertise %>
+	  <% end %>
+	  <% if @collaboration.n_previous_work %>
+	  <li>Previous work</li>
+	  <% end %>
+	</ul>
+      </div>
+    </div>
+    <p class="pull-right">
+      <button type="button" class="btn btn-primary btn-lg">Apply to join</button>
+    </p>
+  </div>
 
 <%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
 <%= link_to 'Back', collaborations_path %>

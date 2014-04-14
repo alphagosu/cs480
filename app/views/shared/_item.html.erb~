@@ -1,0 +1,21 @@
+<div class="row">
+  <h3><%= item.name %></h3>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      Image here
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-8">
+    <p><%= item.desc %></p>
+    <div class="progress=bar" role="progressbar" aria-valuenow="80" aria-valuemax="100" style="width:80%"> 80% matching rate</div>
+
+  </div>
+  <span class="badge badge-success">Posted <% time_ago_in_words(item.created_at) %> ago.</span>
+  <div class="pull-right">
+    <span class="label label-info"><%= item.county %></span>
+    <span class="label label-info">Tags</span>
+  </div>
+</div>
+<div class="pull-right">
+  <h3><%= link_to 'More information', item %></h3>
+</div>

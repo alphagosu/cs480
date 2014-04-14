@@ -1,20 +1,8 @@
 class User < ActiveRecord::Base
 
-STUDY = ["Animal models",
-             "Children",
-             "Adults",
-             "Environment",
-             "Cells/Tissues"]
-INTERESTS = ["Obesity",
-             "Diabetes/Sugar",
-             "Heart disease",
-             "Injury",
-             "Violence prevention",
-             "Falls" ]
-
   has_many :collaborations, dependent: :destroy
 
-  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>" }, :default_url => "images/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>", :collab => "300x200>" }, :default_url => "images/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -55,6 +43,10 @@ INTERESTS = ["Obesity",
 
   def User.hash(token)
     Digest::SHA1.hexdigest(token.to_s)
+  end
+
+  def feed
+    Collaboration.where("user_id = ?", id)
   end
 
   private

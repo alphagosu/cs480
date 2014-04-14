@@ -1,0 +1,6 @@
+<% if @items.any? %>
+<ol class="collaborations">
+  <%= render partial: 'shared/item', collection: @items %>
+</ol>
+<%= will_paginate @items %>
+<% end %>

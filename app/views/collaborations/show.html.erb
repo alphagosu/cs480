@@ -4,10 +4,12 @@
   <div class="col-md-3">
     <h4>Main collaborator</h4>
     <p>
-      <%= link_to 'Picture of collaborator' ,'#' %>
+      <%= link_to @collaboration.user do %>
+      <%= image_tag(@collaboration.user.avatar.url(:collab)) %>
+      <% end %>
     </p>
     <p>
-      <%= link_to 'Dr. Collaborator Person', '#' %>
+      <%= link_to @collaboration.user.first_name + ' ' + @collaboration.user.last_name, @collaboration.user %>
     </p>
     <p>
       <%= @collaboration.county %>, <%= @collaboration.state %>, <%= @collaboration.country %>
@@ -15,7 +17,24 @@
     <p>
       Research interests:<br />
       <ul>
-	<li>Users interests go here</li>
+	<% if @collaboration.user.i_obesity %>
+	<li>Obesity</li>
+	<% end %>
+	<% if @collaboration.user.i_diabetes %>
+	<li>Diabetes</li>
+	<% end %>
+	<% if @collaboration.user.i_heart %>
+	<li>Heart disease</li>
+	<% end %>
+	<% if @collaboration.user.i_injury %>
+	<li>Injuries</li>
+	<% end %>
+	<% if @collaboration.user.i_violence_prevention %>
+	<li>Violence prevention</li>
+	<% end %>
+	<% if @collaboration.user.i_falls %>
+	<li>Falls</li>
+	<% end %>
       </ul>
     </p>
     <h4>Other collaborators involved:</h4>
@@ -27,13 +46,13 @@
   </div>
   <div class="col-md-9">
     <h4>Project info</h4>
-    <p><%= @collaboration.desc %></p>
+    <p style="overflow:auto"><%= @collaboration.desc %></p>
     <div>
       <div class="panel-body">
 	Stage of development: <%= @collaboration.stage %><br />
 	Needs for this project:<br />
 	<ul>
-	  <% if @collaborationn_funding %>
+	  <% if @collaboration.n_funding %>
 	  <li>Funding</li>
 	  <% end %>
 	  <% if @collaboration.n_study_partners %>
@@ -53,9 +72,12 @@
       </div>
     </div>
     <p class="pull-right">
+      <% if current_user?(@collaboration.user) %>
+      <%= link_to "Edit", edit_collaboration_path(@collaboration) %>
+      <% else %>
       <button type="button" class="btn btn-primary btn-lg">Apply to join</button>
+      <% end %>
     </p>
   </div>
+</div>
 
-<%= link_to 'Edit', edit_collaboration_path(@collaboration) %> |
-<%= link_to 'Back', collaborations_path %>

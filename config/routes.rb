@@ -12,6 +12,9 @@ Rct::Application.routes.draw do
       get :notifications
     end
   end
+
+  resources :messages
+  resources :conversations
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]

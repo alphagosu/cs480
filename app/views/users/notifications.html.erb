@@ -5,7 +5,7 @@
   <div class="col-md-10" style="padding:25px">
 
     <%= form_for(@user) do |f| %>
-    <%= render '/shared/error_messages' %>
+    <%= render '/shared/error_messages', object: f.object %>
     <label>Recieve email alerts when:</label>
     <div class="checkbox">
       <%= f.label :notify_new_message do %>

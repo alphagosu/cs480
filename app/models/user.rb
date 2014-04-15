@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-
+  acts_as_messageable
   has_many :collaborations, dependent: :destroy
 
   has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>", :collab => "300x200>" }, :default_url => "images/missing.png"
@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
 
   def feed
     Collaboration.where("user_id = ?", id)
+  end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def mailboxer_email(object)
+    email
   end
 
   private

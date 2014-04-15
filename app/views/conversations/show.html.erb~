@@ -1,0 +1,18 @@
+<div class="row">
+  <%= render 'sidebar' %>
+  <div class="col-md-10">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h3 class="panel-title"><%= @conversation.subject %></h3>
+	<p class="small">
+	  <%= link_to @conversation.originator.name, @conversation.originator %> sent this <%= time_ago_in_words(@conversation.created_at) %> ago.
+	</p>
+      </div>
+      <div class="panel-body">
+	<div>
+	  <%= @conversation.last_message %>
+	</div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,2 +1,5 @@
-<h2><%= conversation.subject %></h2>
-<p><%= conversation.last_message.body %> </p>
+
+<% @conversations.each do |conv| %> 
+<h2><%= conv.subject %></h2>
+<p><%= conv.last_message.body %> </p>
+<% end %>

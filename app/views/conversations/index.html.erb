@@ -1,0 +1,22 @@
+<div class="row">
+
+  <%= render 'sidebar' %>
+  <div class="col-md-10">
+    <table class="table table-striped table-bordered table-hover">
+      <thead>
+	<tr>
+	  <th></th>
+	  <th>Sender</th>
+	  <th>Subject</th>
+	</tr>
+      </thead>
+      <tbody>
+	<% @conversations.each do |conv| %>
+	<tr>
+	  <td></td>
+	  <td><%= link_to conv.originator.name, conv.originator %>
+	  <td><%= link_to conv.subject, conv %></td>
+	</tr>
+	<% end %>
+      </tbody>
+  </div>

@@ -3,7 +3,7 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = @mailbox.inbox.page(params[:page])
-    render @conversations
+    #render @conversations
   end
 
 

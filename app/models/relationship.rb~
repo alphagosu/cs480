@@ -1,0 +1,4 @@
+class Relationship < ActiveRecord::Base
+  belongs_to :collab, class_name: "Collaboration"
+  belongs_to :user, class_name: "User"
+end

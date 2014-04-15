@@ -1,24 +1,24 @@
 	  <%= f.label :i_obesity, "Obesity", class: "checkbox-inline" do %>
-	    <%= f.check_box :i_obesity %> Obesity
+	    <%= f.check_box :i_obesity %>
 	  <% end %>
 
 	  <%= f.label :i_diabetes, "Diabetes/sugar", class: "checkbox-inline" do %>
-	    <%= f.check_box :i_diabetes %> Diabetes/sugar
+	    <%= f.check_box :i_diabetes %>
 	  <% end %>	
 
 	  <%= f.label :i_heart, "Heart disease", class: "checkbox-inline" do %>
-	    <%= f.check_box :i_heart %> Heart disease
+	    <%= f.check_box :i_heart %>
 	  <% end %>
 	  
 	  <%= f.label :i_injury, "Injuries", class: "checkbox-inline" do %>	  
-	  <%= f.check_box :i_injury %> Injuries
+	  <%= f.check_box :i_injury %>
 	  <% end %>
 
 	  <%= f.label :i_violence_prevention, "Violence prevention", class: "checkbox-inline" do %>	  
-	    <%= f.check_box :i_violence_prevention %> Violence prevention
+	    <%= f.check_box :i_violence_prevention %>
 	  <% end %>
 	  
 	 <%= f.label :i_falls, "Falls", class: "checkbox-inline" do %>
-	    <%= f.check_box :i_falls %> Falls
+	    <%= f.check_box :i_falls %>
 	  <% end %>
 

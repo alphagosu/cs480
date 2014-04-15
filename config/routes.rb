@@ -1,6 +1,10 @@
 Rct::Application.routes.draw do
 
-  resources :collaborations
+  resources :collaborations do
+    member do
+      get :user, :collab
+    end
+  end
 
   resources :users  do
     member do
@@ -10,6 +14,7 @@ Rct::Application.routes.draw do
   end
   
   resources :sessions, only: [:new, :create, :destroy]
+  resources :relationships, only: [:create, :destroy]
   root 'static_pages#home'
   match '/registration', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'

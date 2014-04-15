@@ -73,7 +73,18 @@
 	<%= f.check_box :n_previous_work %>
       </div>
     </div>
+
+
   </div>
+
+  <div class="form-group">
+    <%= f.label :desc, "", class: "col-sm-2 control-label" %>
+    <div class="col-sm-9">
+      <%= f.text_area :desc, rows: 10 %>
+    </div>
+  </div>
+
+
   
 
 

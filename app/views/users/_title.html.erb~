@@ -1,0 +1,8 @@
+	  <%= f.label :is_researcher, "Researcher", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_researcher %>
+	  <%= f.label :is_teacher, "Teacher", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_teacher %>
+	  <%= f.label :is_student, "Student", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_student %>
+	  <%= f.label :is_comm_member, "Community member", class: 'checkbox-inline' %>
+	  <%= f.check_box :is_comm_member %>

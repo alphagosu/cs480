@@ -70,6 +70,6 @@ class CollaborationsController < ApplicationController
       params.require(:collaboration).permit(:name, :desc, :country, :state, :county,
                                             :stage, :n_funding, :n_study_patterns, 
                                             :n_space, :n_areas_of_expertise, 
-                                            :n_previous_work, :n_expertise)
+                                            :n_previous_work, :n_expertise, :picture)
     end
 end

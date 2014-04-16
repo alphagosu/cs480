@@ -30,7 +30,7 @@ class CollaborationsController < ApplicationController
       flash[:success] = "Collaboration successfully created!"
       redirect_to @collaboration
     else
-      render 'static_pages/home'
+      render 'new'
     end
 
   end

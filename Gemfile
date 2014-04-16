@@ -6,7 +6,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass'
 gem 'sprockets'
-gem 'paperclip', '~> 4.1'
+gem 'paperclip'
 gem 'mailboxer'
 # Use sqlite3 as the database for Active Record
 group :development do

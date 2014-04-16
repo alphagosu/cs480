@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   acts_as_messageable
   has_many :collaborations, dependent: :destroy
 
-  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>", :collab => "300x200>", :msg => "50x50>" }, :default_url => "images/missing.png"
+  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>", :collab => "300x200>", :msg => "50x50>" }, :default_url => "missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }

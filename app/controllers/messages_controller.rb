@@ -8,11 +8,12 @@ class MessagesController < ApplicationController
 
   def create 
     if params[:message][:recipients].present?
-      @recipients = User.find_by_id(params[:recipients])
+      @recipients = User.find_by_id(params[:message][:recipients])
     else
       []
     end
-    
+    puts @user.name
+    puts @recipients.name
     @receipt = @user.send_message(@recipients, params[:message][:body], params[:message][:subject], "New Message", "New Message")
     if (@receipt.errors.blank?)
       @conversation = @receipt.conversation

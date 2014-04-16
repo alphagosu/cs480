@@ -1,18 +1,40 @@
 <div class="row">
   <%= render 'sidebar' %>
   <div class="col-md-10">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-	<h3 class="panel-title"><%= @conversation.subject %></h3>
-	<p class="small">
-	  <%= link_to @conversation.originator.name, @conversation.originator %> sent this <%= time_ago_in_words(@conversation.created_at) %> ago.
-	</p>
+    <h3><%= @conversation.subject %></h3>
+    <h4>Participants:</h4>
+    <% @conversation.recipients.each do |recp| %>
+    <%= link_to image_tag(recp.avatar.url(:msg), title: recp.name, alt: recp.name), recp %> 
+    <% end %>
+
+    
+    <div class="messages">
+      <div class="panel panel-default">
+	
+	<ul class="list-group">
+	  <% @receipts.each do |receipt| %>
+	  <%= render receipt.message %>
+	  <% end %>
+	</ul>	  
       </div>
-      <div class="panel-body">
-	<div>
-	  <%= @conversation.last_message.body %>
-	</div>
+      <% if @receipt and @receipt.errors.any? %>	
+      <div class="error">
+	<h4><%= pluralize(@receipt.errors.count, "error") %> errors:</h4>
+	<ul>
+	  <% @receipt.errors.full_messages.each do |msg| %>
+	  <li><%= msg %></li>
+	  <% end %>
+	</ul>
       </div>
+      <% end %>
+      <%= form_tag conversation_path(@conversation), method: :put, class: "cont-conversation" do %>
+      <div class="editor">
+	<%= text_area_tag :body, nil, rows: 6, cols: 53, class: "required form_tag" %>
+      </div>
+      <div class="action">
+	<%= submit_tag t('mailboxer.reply'), name: :reply_all, class: "btn" %>
+      </div>
+      <% end %>
     </div>
-  </div>
-</div> 
+  </div> 
+</div>

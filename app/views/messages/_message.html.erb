@@ -1,0 +1,11 @@
+<br />
+<div class="message-body">
+  <div class="info">
+    <%= link_to image_tag(message.sender.avatar.url(:msg)), message.sender %><%= link_to message.sender.name, message.sender %> said 
+  </div>
+
+  <div class="word-break pre-message">
+    <%= raw(message.body) %>
+    <p class="small"><%= time_ago_in_words(message.updated_at) %> ago.</p>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<section id="new_message">
+
+  <%= render partial: 'new' %>
+
+<% end %>
+</section>

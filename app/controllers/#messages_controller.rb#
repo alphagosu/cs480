@@ -7,17 +7,19 @@ class MessagesController < ApplicationController
   end
 
   def create 
-    if params[:message][:recipients].present?
+    if params[:recipients].present?
       @recipients = User.find_by_id(params[:recipients])
+    elsif params[:subject].present?
+      puts "ERRORRRRR!"
     else
-      []
+      puts "ERRORRRRR"
     end
-    
-    @receipt = @user.send_message(@recipients, params[:message][:body], params[:message][:subject], "New Message", "New Message")
+    puts 
+    @receipt = @user.send_message(@recipients, params[:body], params[:subject], "New Message", "New Message")
     if (@receipt.errors.blank?)
       @conversation = @receipt.conversation
-      #flash[:success]= "Message sent"
-      redirect_to conversations_path
+      flash[:success]= "Message sent"
+      redirect_to @conversation
     else
       render :action => :new
     end    

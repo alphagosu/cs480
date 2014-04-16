@@ -1,0 +1,23 @@
+<%= form_for messages_path, method: :post, class: "new_message" do |f| %>
+<% if @receipt and @receipt.errors.any? %>
+<div class="error">
+  <h2><%= pluralize(@receipt.errors.count, "error") %> errors:</h2>
+  <ul>
+    <% @receipt.errors.messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= f.label :recipients, "Recipients" %>
+<%= f.hidden_field :recipients, value: params[:reciever] %>
+
+<%= f.label :subject %>
+<%= f.text_field :subject %>
+
+<%= f.label :body %>
+<%= f.text_area :body %>
+
+<%= f.submit "Send", class: "btn btn-large" %>
+<% end %>

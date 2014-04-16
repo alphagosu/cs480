@@ -22,9 +22,8 @@ Rct::Application.routes.draw do
   match '/registration', to: 'users#new', via: 'get'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
-  
+  match '/messages/new', to: 'messages#create', via: 'post'
   get '/users/subregion_options' => 'users#subregion_options'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

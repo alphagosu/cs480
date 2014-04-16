@@ -10,7 +10,7 @@
       <% if current_user && current_user?(@user) %>
       <%= link_to "Edit profile", edit_user_path(@user),  class: "btn btn-primary" %>
       <% else %>
-      <%= link_to '#', class: "btn btn-primary" do %>
+      <%= link_to new_message_path(reciever: @user), class: "btn btn-primary" do %>
       <span class="glyphicon glyphicon-envelope" style="vertical-align:middle"></span> Send message<% end %>
       <% end %>
     </p>

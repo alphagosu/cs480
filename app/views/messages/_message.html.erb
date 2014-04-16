@@ -1,11 +1,25 @@
-<br />
-<div class="message-body">
-  <div class="info">
-    <%= link_to image_tag(message.sender.avatar.url(:msg)), message.sender %><%= link_to message.sender.name, message.sender %> said 
-  </div>
-
-  <div class="word-break pre-message">
-    <%= raw(message.body) %>
-    <p class="small"><%= time_ago_in_words(message.updated_at) %> ago.</p>
+<div class="message-item" id="<%= message.id %>">
+  <div class="message-inner">
+    <div class="message-head clearfix">
+      <div class="avatar pull-left">
+	<%= link_to image_tag(message.sender.avatar.url(:msg)), message.sender %>
+      </div>
+      <div class="user-detail">
+	<h5 class="handle"><%= message.sender.name %></h5>
+	<div class="post-meta">
+	  <span class="qa-message-what"></span>
+	  <span class="qa-message-when">
+	    <span class="qa-message-when-data"><%= time_ago_in_words(message.updated_at) %> ago.</span>
+	  </span>
+	  <span class="qa-message-who">
+	    <!-- <span class="qa-message-who-pad"> by</span> -->
+	    <!-- <span class="qa-message-who-data">Name</span> -->
+	  </span>
+	</div>
+      </div>
+    </div>
+    <div class="qa-message-content">
+      <%= raw(message.body) %>
+    </div>
   </div>
 </div>

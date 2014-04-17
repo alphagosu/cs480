@@ -8,7 +8,16 @@
   <div class="navbar-collapse collapse">
       <% if signed_in? %>
       <ul class="nav navbar-nav">
-        <li class="alert-danger"><%= link_to "Inbox", conversations_path %></li>
+	  <% @unread_count = current_user.mailbox.inbox({:read => false}).count %>
+	  <% if @unread_count == 0 %>
+	    <li>
+	  <% else %>
+	    <li class="alert-danger">
+	  <% end %>
+	  <%= link_to conversations_path do %>
+	  Inbox <span class="badge"><%= @unread_count %></span>
+	  <% end %>
+	    </li>
         <li><%= link_to "Search", '#' %></li>
         <li><%= link_to "My Profile", edit_user_path(current_user) %></li>
         <li class="dropdown">

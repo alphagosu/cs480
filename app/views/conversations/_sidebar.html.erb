@@ -2,7 +2,8 @@
   <ul class="nav nav-list nav-sidebar">
     <li class="nav-header">Mail</li>
     <li><%= link_to "Inbox", conversations_path %></li>
-    <li><%= link_to "Sent Mail", '#' %></li>
+    <li><%= link_to "Sent Mail", conversations_path(box: :sentbox) %></li>
+    <li><%= link_to "Trash", conversations_path(box: :trash) %>
     <li class="divider"></li>
     <li class="nav-header">Tags</li>
     <li><%= link_to "Tag example", '#' %></li>

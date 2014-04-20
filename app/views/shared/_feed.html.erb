@@ -1,6 +1,9 @@
-<% if @items && @items.any? %>
 <div class="span8">
+<% if @items && @items.any? %>
   <%= render partial: 'shared/item', collection: @items %>
   <%= will_paginate @items %>
-</div>
 <% end %>
+<% if @users && @users.any? %>
+<%= render partial: 'shared/user', collection: @users %>
+<% end %>
+</div>

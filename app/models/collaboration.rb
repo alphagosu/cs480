@@ -22,4 +22,8 @@ class Collaboration < ActiveRecord::Base
     relationships.find_by(user_id: user.id).destroy
   end
 
+  def match_rate
+    
+  end
+
 end

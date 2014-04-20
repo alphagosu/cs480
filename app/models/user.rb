@@ -45,8 +45,9 @@ class User < ActiveRecord::Base
     Digest::SHA1.hexdigest(token.to_s)
   end
 
-  def feed
-    Collaboration.where("user_id = ?", id)
+  def feed(user)
+    User.all.sort_by { |user| user.match_rate(user) }.reverse
+    #User.all.sort_by(&:match_rate(user))
   end
 
   def name
@@ -55,6 +56,60 @@ class User < ActiveRecord::Base
 
   def mailboxer_email(object)
     email
+  end
+
+  def match_rate(current_user)
+    rate = 0
+    # max 26
+    if current_user.is_teacher == is_teacher
+      rate = rate + 1
+    end
+    if current_user.is_researcher == is_researcher
+      rate = rate + 1
+    end
+    if current_user.is_teacher == is_teacher
+      rate = rate + 1
+    end
+    if current_user.is_comm_member == is_comm_member
+      rate = rate + 1
+    end
+
+    if current_user.s_animal == s_animal 
+      rate = rate + 2
+    end
+    if current_user.s_children == s_children
+      rate = rate + 2
+    end
+    if current_user.s_adults == s_adults
+      rate = rate + 2
+    end
+    if current_user.s_environment == s_environment
+      rate = rate + 2
+    end
+    if current_user.s_cells == s_cells
+      rate = rate + 2
+    end
+
+    if current_user.i_obesity == i_obesity
+      rate = rate + 2
+    end
+    if current_user.i_diabetes == i_diabetes
+      rate = rate + 2
+    end
+    if current_user.i_heart == i_heart
+      rate = rate + 2
+    end
+    if current_user.i_violence_prevention == i_violence_prevention
+      rate = rate + 2
+    end
+    if current_user.i_injury == i_injury
+      rate = rate + 2
+    end
+    if current_user.i_falls = i_falls
+      rate = rate + 2
+    end
+
+    return rate
   end
 
   private

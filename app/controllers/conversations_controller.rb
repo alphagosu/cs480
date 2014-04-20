@@ -15,7 +15,12 @@ class ConversationsController < ApplicationController
   end
 
   def show
-    @receipts = @mailbox.receipts_for(@conversation).not_trash
+    if @box.eql? 'trash'
+      @receipts = @mailbox.receipts_for(@conversation).trash
+    else
+      @receipts = @mailbox.receipts_for(@conversation).not_trash
+    end
+    @receipts.mark_as_read
   end
 
   def update

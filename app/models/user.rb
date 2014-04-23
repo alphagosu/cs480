@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   end
 
   def feed(user)
-    User.all.sort_by { |user| user.match_rate(user) }.reverse
+    User.all.sort_by { |user| user.match_rate(user) }
     #User.all.sort_by(&:match_rate(user))
   end
 

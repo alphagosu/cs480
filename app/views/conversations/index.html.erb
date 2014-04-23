@@ -20,5 +20,8 @@
 	<% end %>
       </tbody>
     </table>
+    <% if @conversations.count == 0 %>
+    <p><strong>No messages!</strong></p>
+    <% end %>
   </div>
 </div>

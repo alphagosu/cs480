@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   acts_as_messageable
   has_many :collaborations, dependent: :destroy
-
-  has_attached_file :avatar, :styles => { :medium => "500x500>", :thumb => "250x250>", :profile => "200x200>", :collab => "300x200>", :msg => "50x50>" }, :default_url => "missing.png"
+  
+  has_attached_file :avatar, :styles => { :profile => "200x200>", :collab => "300x200>", :msg => "50x50>", :thumb => "250x250>" }, :default_url => "missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
     SecureRandom.urlsafe_base64
   end
 
-  def User.hash(token)
+  def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
 
@@ -60,14 +60,14 @@ class User < ActiveRecord::Base
 
   def match_rate(current_user)
     rate = 0
-    # max 26
+    max = 26
     if current_user.is_teacher == is_teacher
       rate = rate + 1
     end
     if current_user.is_researcher == is_researcher
       rate = rate + 1
     end
-    if current_user.is_teacher == is_teacher
+    if current_user.is_student == is_student
       rate = rate + 1
     end
     if current_user.is_comm_member == is_comm_member
@@ -92,6 +92,9 @@ class User < ActiveRecord::Base
 
     if current_user.i_obesity == i_obesity
       rate = rate + 2
+    else
+      puts "error5"
+
     end
     if current_user.i_diabetes == i_diabetes
       rate = rate + 2
@@ -105,11 +108,10 @@ class User < ActiveRecord::Base
     if current_user.i_injury == i_injury
       rate = rate + 2
     end
-    if current_user.i_falls = i_falls
+    if current_user.i_falls == i_falls
       rate = rate + 2
     end
-
-    return rate
+    return ((1.0*rate)/max * 100).round
   end
 
   private

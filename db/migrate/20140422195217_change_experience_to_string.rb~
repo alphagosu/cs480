@@ -1,0 +1,4 @@
+class ChangeExperienceToString < ActiveRecord::Migration
+  def change
+  end
+end

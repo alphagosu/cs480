@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140415175306) do
+ActiveRecord::Schema.define(version: 20140422195217) do
 
   create_table "collaborations", force: true do |t|
     t.string   "name"
@@ -113,27 +113,27 @@ ActiveRecord::Schema.define(version: 20140415175306) do
     t.boolean  "is_comm_member"
     t.string   "study_location"
     t.string   "main_interests"
-    t.integer  "experience"
+    t.string   "experience"
     t.integer  "travel_distance"
-    t.boolean  "i_obesity",             default: false
-    t.boolean  "i_diabetes",            default: false
-    t.boolean  "i_heart",               default: false
-    t.boolean  "i_injury",              default: false
-    t.boolean  "i_violence_prevention", default: false
-    t.boolean  "i_falls",               default: false
-    t.string   "s_animal"
-    t.string   "s_children"
-    t.string   "s_adults"
-    t.string   "s_environment"
-    t.string   "s_cells"
+    t.boolean  "i_obesity",                         default: false
+    t.boolean  "i_diabetes",                        default: false
+    t.boolean  "i_heart",                           default: false
+    t.boolean  "i_injury",                          default: false
+    t.boolean  "i_violence_prevention",             default: false
+    t.boolean  "i_falls",                           default: false
+    t.boolean  "s_animal",              limit: 255, default: false
+    t.boolean  "s_children",            limit: 255, default: false
+    t.boolean  "s_adults",              limit: 255, default: false
+    t.boolean  "s_environment",         limit: 255, default: false
+    t.boolean  "s_cells",               limit: 255, default: false
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
-    t.boolean  "notify_new_message",    default: true
-    t.boolean  "notify_new_collab",     default: true
-    t.integer  "notify_collab_percent", default: 70
-    t.boolean  "admin",                 default: false
+    t.boolean  "notify_new_message",                default: true
+    t.boolean  "notify_new_collab",                 default: true
+    t.integer  "notify_collab_percent",             default: 70
+    t.boolean  "admin",                             default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

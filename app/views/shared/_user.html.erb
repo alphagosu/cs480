@@ -8,7 +8,8 @@
   <div class="col-sm-6 col-md-8">
     <p></p>
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemax="100" style="width:80%"> 80% matching rate</div>
+      <% @rate = current_user.match_rate(user) %>
+      <div class="progress-bar" role="progressbar" aria-valuenow="<%= @rate %>" aria-valuemax="100" style="width:<%= @rate %>%"> <%= @rate %>% matching rate</div>
     </div>
 
   </div>

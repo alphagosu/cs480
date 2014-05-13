@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_messageable
+  require 'will_paginate/array'
   has_many :collaborations, dependent: :destroy
   
   has_attached_file :avatar, :styles => { :profile => "200x200>", :collab => "300x200>", :msg => "50x50>", :thumb => "250x250>" }, :default_url => "missing.png"

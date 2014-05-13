@@ -1,4 +1,4 @@
-<% provide(:title, @user.first_name + @user.last_name) %>
+<% provide(:title, @user.name) %>
 
 <div class="row">
   <div class="col-md-3">
@@ -16,9 +16,9 @@
     </p>
     <p><%= @user.county %> county, <%= @user.state %>, <%= @user.country %></p>
     <p>A member for <%= time_ago_in_words(@user.created_at) %>.</p>
+    <%= render 'details' %>
   </div>
 </div>
-
 <% if current_user && (current_user?(@user) || current_user.admin?) %>
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <% end %>

@@ -37,6 +37,11 @@
       <label>Which terms describe your main interests?</label>
       <%= render partial: 'interests', locals: {f: f} %>
     </div>
+   
+    <div class="form-group">
+      <%= f.label :desc, "Please enter a short description of yourself." %>
+      <%= f.text_area :desc %>
+    </div>
 
     <div class="form-group">
       <%= f.label :country, "Location" %>

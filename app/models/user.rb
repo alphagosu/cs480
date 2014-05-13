@@ -114,6 +114,26 @@ class User < ActiveRecord::Base
     return ((1.0*rate)/max * 100).round
   end
 
+  def study_list
+    list = []
+    if s_animal
+        list << "animals"
+    end
+    if s_children
+        list << "children"
+    end
+    if s_adults
+        list << "adults"
+    end
+    if s_environment
+        list << "the environment"
+    end
+    if s_cells
+        list << "cells"
+    end
+    list
+  end
+
   private
 
   def create_remember_token

@@ -6,7 +6,9 @@
     </div>
   </div>
   <div class="col-sm-6 col-md-8">
-    <p></p>
+    <p>
+      <%= truncate(user.desc, length: 750) %>
+    </p>
     <div class="progress">
       <% @rate = current_user.match_rate(user) %>
       <div class="progress-bar" role="progressbar" aria-valuenow="<%= @rate %>" aria-valuemax="100" style="width:<%= @rate %>%"> <%= @rate %>% matching rate</div>
@@ -16,7 +18,18 @@
   <span class="badge badge-success">Member for <%= time_ago_in_words(user.created_at) %></span>
   <div class="pull-right">
     <span class="label label-info"><%= user.county %></span>
-    <span class="label label-info">Tags</span>
+    <% if user.is_comm_member %>
+    <span class="label label-info">Community member</span>
+    <% end %>
+    <% if user.is_researcher %>
+    <span class="label label-info">Researcher</span>
+    <% end %>
+    <% if user.is_teacher %>
+    <span class="label label-info">Teacher</span>
+    <% end %>
+    <% if user.is_student %>
+    <span class="label label-info">Student</span>
+    <% end %>
   </div>
   <div class="pull-right">
     <h3><%= link_to 'More information', user %></h3>

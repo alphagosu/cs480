@@ -1,0 +1,32 @@
+<div class="col-md-4">
+  <h3>Interests:</h3>
+  <ul>
+    <% if @user.i_obesity %>
+    <li>Obesity</li>
+    <% end %>
+    <% if @user.i_diabetes %>
+    <li>Diabetes</li>
+    <% end %>
+    <% if @user.i_heart %>
+    <li>Heart disease</li>
+    <% end %>
+    <% if @user.i_injury %>
+    <li>Injuries</li>
+    <% end %>
+    <% if @user.i_violence_prevention %>
+    <li>Violence prevention</li>
+    <% end %>
+    <% if @user.i_falls %>
+    <li>Falls</li>
+    <% end %>
+  </ul>
+</div>
+<div class="col-md-5">
+  <h3>Background:</h3>
+  <p>
+  <%= @user.name %> studies <%= @user.study_list.map { |s| "#{s}" }.join(', ') %> and has been involved in these fields for <%= @user.experience %>.
+  </p>
+  <h3>Profile:</h3>
+  <p><%= @user.desc %></p>
+
+</div>

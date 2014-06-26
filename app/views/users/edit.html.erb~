@@ -1,0 +1,72 @@
+<% provide(:title, "Editing profile") %>
+<div class="row">
+  <%= render partial: "edit_sidebar" %>
+
+  <div class="col-md-10" style="padding:10px">
+
+    <%= form_for(@user) do |f| %>
+    <%= render '/shared/error_messages', object: f.object %>
+
+
+    <div class="form-group">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name, class: 'form-control', autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">      
+      <label>I am a...</label>
+      <%= render partial: 'title', locals: {f: f} %>
+    </div>
+
+    <div class="form-group">
+      <label>Who/what do you study?</label>
+      <%= render partial: 'study', locals: {f: f} %>
+    </div>
+
+    <div class="form-group">
+      <label>Where do you study at?</label>
+      <%= render partial: 'study_location', locals: {f: f} %>
+    </diV>
+
+    <div class="form-group">
+      <label>Which terms describe your main interests?</label>
+      <%= render partial: 'interests', locals: {f: f} %>
+    </div>
+   
+    <div class="form-group">
+      <%= f.label :desc, "Please enter a short description of yourself." %>
+      <%= f.text_area :desc %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :country, "Location" %>
+      <div class="col-sm-5">
+	<%= f.country_select :country %>
+      </div>
+      <div class="col-sm-5">
+	<%= f.text_field :state %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :travel_distance, "How far are you willing to travel?" %>
+      <%= render partial: 'travel', locals: {f: f} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :avatar, "Upload a new picture" %>
+      <%= f.file_field :avatar %>
+    </div>
+    
+    <div class="form-group pull-right">
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+      

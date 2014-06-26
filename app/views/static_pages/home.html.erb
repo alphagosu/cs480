@@ -1,5 +1,28 @@
 <% if signed_in? %>
 <%= render 'shared/feed' %>
 <% else %>
+<!DOCTYPE html>
 
+<html>
+<head>
+    <title>Research Collaboration Tool</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- static navbar -->
+
+        <div class="jumbotron">
+            <h1>Welcome to the Research Collaboration Tool</h1>
+
+            <p>Welcome to the Research Collaboration Tool (RCT). RCT was designed to make it easier for you to meet people who have shared interests for projects and research in a particular area. RCT users include community members who want to see change in their community, health providers who see particular patterns among their patients' health outcomes, students who want to collaborate with faculty and teachers, and researchers who want to conduct meaningful research.</p>
+
+	    <p><%= link_to "Click here to get started", registration_path %></p>
+
+       
+        </div>
+    </div><script src="js/jquery.js"></script><script src="js/bootstrap.js"></script>
+</body>
+</html>
 <% end %>
